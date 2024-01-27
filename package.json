@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "firebase": "^10.7.2",
-    "preact": "^10.19.3"
+    "preact": "^10.19.3",
+    "react-icons": "^5.0.1",
+    "react-router-dom": "^6.21.3"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.7.0",

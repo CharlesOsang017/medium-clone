@@ -5,3 +5,6 @@
 *{
   @apply p-0 m-0 box-border;
 }
+.size{
+  @apply w-[95%] md:w-[90%] mx-auto
+}
