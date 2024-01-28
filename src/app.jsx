@@ -4,11 +4,13 @@ import Home from "./components/home/Home";
 import HomeHeader from "./components/home/HomeHeader";
 import DemoHeader from "./components/demo/DemoHeader";
 import { Blog } from "./context/Context";
+import  { Toaster } from 'react-hot-toast';
 
 export function App() {
   const {currentUser} = Blog();
   return (
     <>
+    <Toaster />
       {currentUser ? <HomeHeader /> : <DemoHeader />}
       <Routes>
         {currentUser && <Route path='/' element={<Home />} />}

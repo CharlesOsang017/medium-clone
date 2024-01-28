@@ -84,9 +84,9 @@ const Auth = ({modal, setModal}) => {
               </p>
             </>
           ) : signReq === "sign-in" ? (
-            <SignIn setSignReq={setSignReq} />
+            <SignIn setSignReq={setSignReq} setModal={setModal} />
           ) : signReq === "sign-up" ? (
-            <SignUp setSignReq={setSignReq} />
+            <SignUp setSignReq={setSignReq}  setModal={setModal}/>
           ) : null}
           <p className='mx-auto text-center text-sm md:w-[30rem] mb-[3rem]'>
             click 'Sign In' to agree to Medium's terms of service and
