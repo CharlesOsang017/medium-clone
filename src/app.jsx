@@ -1,18 +1,22 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Demo from "./components/demo/Demo";
 import Home from "./components/home/Home";
 import HomeHeader from "./components/home/HomeHeader";
 import DemoHeader from "./components/demo/DemoHeader";
 
 export function App() {
-  const auth = false;
+  const currentUser = false;
   return (
     <>
-    {auth ? <HomeHeader /> : <DemoHeader />}
-    <Routes>
-      <Route path='/demo' element={<Demo />}/>
-      <Route path='/' element={<Home />}/>
-    </Routes>
+      {currentUser ? <HomeHeader /> : <DemoHeader />}
+      <Routes>
+        {currentUser && <Route path='/' element={<Home />} />}
+        {!currentUser && <Route path='/demo' element={<Demo />} />}
+        <Route
+          path='*'
+          element={<Navigate to={!currentUser ? "/demo" : "/"} />}
+        />
+      </Routes>
     </>
-  )
+  );
 }
