@@ -5,7 +5,7 @@ import Auth from "./auth/Auth";
 
 const DemoHeader = () => {
   const [isActive, setIsActive] = useState(false);
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   useEffect(() => {
     const scrollMe = () => {
       window.scrollY > 50 ? setIsActive(true) : setIsActive(false);

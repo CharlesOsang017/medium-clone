@@ -13,10 +13,10 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Auth = ({modal, setModal}) => {
-  const hidden =  modal ? "visible opacity-100" : "invisible opacity-0"
   const [createUser, setCreateUser] = useState(false);
   const [signReq, setSignReq] = useState("");
   const navigate = useNavigate()
+  // const [modal, setModal] = useState(false);
 
   const googleAuth = async ()=>{
     try {
@@ -41,12 +41,15 @@ const Auth = ({modal, setModal}) => {
       toast.error(error.message)
     }
   }
+
+  // const hidden = {}
   
+  const hidden =  modal ? "visible opacity-100" : "invisible opacity-0"
 
   return (
     <Modal modal={modal} setModal={setModal} hidden={hidden}>
       <section
-        className={`z-50 fixed top-0 bottom-0 left-0 overflow-auto right-0 bg-white shadows md:right-[10rem] md:left-[10rem] ${hidden} transition-all duration-500`}
+        className={`z-50 fixed top-0 bottom-0 left-0 overflow-auto right-0 bg-white shadows md:right-[10rem] md:left-[10rem] ${modal ? "visible opacity-100" : "invisible opacity-0"} transition-all duration-500`}
       >
         <button onClick={()=>setModal(false)} className='hover:opacity-50 absolute top-8 right-8 text-2xl'>
           <LiaTimesSolid />
