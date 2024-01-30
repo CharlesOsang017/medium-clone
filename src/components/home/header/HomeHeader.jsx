@@ -7,24 +7,28 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import Modal from "../../../utils/Modal";
 import UserModal from "./UserModal";
+import { CiSearch } from "react-icons/ci";
 
 const HomeHeader = () => {
   const [modal, setModal] = useState(false);
+  const [searchModal, setSearchModal] = useState(false);
   return (
     <header className='border-b border-gray-200'>
       {/* left side */}
       <div className='size flex items-center justify-between h-[60px]'>
         <div className='flex items-center gap-3'>
+          
           <Link to={'/'}>
             <span className='text-5xl'>
               <BsMedium />
             </span>
           </Link>
-          <Search />
+          <Search  modal={searchModal} setModal={setSearchModal}/>
         </div>
         <div className='flex items-center gap-3 sm:gap-7'>
           {/* right side */}
            <div className="flex items-center gap-3 sm:gap-7">
+           <span onClick={()=> setSearchModal(true)} className="flex sm:hidden text-3xl text-gray-300 cursor-pointer"><CiSearch /></span>
             <Link to='/write' className="hidden md:flex items-center gap-1 text-gray-500">
             <span className="text-3xl">
               <LiaEditSolid />
