@@ -5,6 +5,7 @@ import HomeHeader from "./components/home/header/HomeHeader";
 import DemoHeader from "./components/demo/DemoHeader";
 import { Blog } from "./context/Context";
 import  { Toaster } from 'react-hot-toast';
+import Profile from "./components/home/profile/Profile";
 
 export function App() {
   const {currentUser} = Blog();
@@ -15,6 +16,7 @@ export function App() {
       <Routes>
         {currentUser && <Route path='/' element={<Home />} />}
         {!currentUser && <Route path='/demo' element={<Demo />} />}
+        <Route path="/profile/:userId" element={<Profile />}/>
         <Route
           path='*'
           element={<Navigate to={!currentUser ? "/demo" : "/"} />}
