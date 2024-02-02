@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { BsMedium } from "react-icons/bs";
 import Search from "../Search";
 import { LiaEditSolid } from "react-icons/lia";
@@ -14,7 +14,10 @@ import Loading from "../../loading/Loading";
 const HomeHeader = () => {
   const [modal, setModal] = useState(false);
   const [searchModal, setSearchModal] = useState(false);
-  const { allUsers, userLoading, currentUser } = Blog();
+  const { allUsers, userLoading, currentUser, setPublish } = Blog();
+
+  const {pathname} = useLocation()
+  console.log(pathname)
 
   const getUserData = allUsers.find((user) => user.id === currentUser?.uid);
   return (
@@ -39,7 +42,8 @@ const HomeHeader = () => {
             >
               <CiSearch />
             </span>
-            <Link
+            {pathname === '/write' ? <button onClick={()=> setPublish(true)} className="btn !bg-green-700 !py-1 !text-white !rounded-full">Publish</button> : (
+              <Link
               to='/write'
               className='hidden md:flex items-center gap-1 text-gray-500'
             >
@@ -48,6 +52,7 @@ const HomeHeader = () => {
               </span>
               <span className='text-sm mt-2'>Write</span>
             </Link>
+            )}
             <span className='text-3xl text-gray-500 cursor-pointer'>
               <IoMdNotificationsOutline />
             </span>

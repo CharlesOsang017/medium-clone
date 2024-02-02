@@ -9,6 +9,7 @@ const BlogContext = createContext();
 const Context = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [allUsers, setAllUsers] = useState([]);
+  const [publish, setPublish] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
   const [userLoading, setUserLoading] = useState(true);
   useEffect(() => {
@@ -34,14 +35,23 @@ const Context = ({ children }) => {
             id: doc.id,
           }))
         );
-        setUserLoading(false)
+        setUserLoading(false);
       });
     };
     getUsers();
   }, []);
-// console.log(allUsers)
+  // console.log(allUsers)
   return (
-    <BlogContext.Provider value={{ currentUser, setCurrentUser, allUsers, userLoading }}>
+    <BlogContext.Provider
+      value={{
+        currentUser,
+        setCurrentUser,
+        allUsers,
+        userLoading,
+        publish,
+        setPublish,
+      }}
+    >
       {loading ? <Loading /> : children}
     </BlogContext.Provider>
   );
